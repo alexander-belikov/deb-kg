@@ -1,0 +1,56 @@
+general:
+    name: debian-eco
+    version: 0.0.1
+resources: []
+#-   resource_name: communities
+#    apply:
+#    -   source: package
+#        target: pa
+#    -   key: entity
+#        apply:
+#        -   vertex: entity
+#    -   key: community
+#        apply:
+#        -   vertex: community
+vertex_config:
+    vertices:
+    -   name: package
+        fields:
+        -   name
+        -   version
+        indexes:
+        -   fields:
+            -   name
+            -   version
+    -   name: maintainer
+        fields:
+        -   name
+        -   email
+        indexes:
+        -   fields:
+            -   name
+            -   email
+    -   name: uploader
+        fields:
+        -   name
+        -   email
+        indexes:
+        -   fields:
+            -   name
+            -   email
+    -   name: bug
+        fields:
+        -   text
+        indexes:
+        -   fields:
+            -   _key
+edge_config:
+    edges:
+    -   source: package
+        target: package
+    -   source: maintainer
+        target: package
+    -   source: uploader
+        target: package
+    -   source: package
+        target: bug
