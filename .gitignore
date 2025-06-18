@@ -192,3 +192,26 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# Latexmk
+*.fdb_latexmk
+
+# SyncTeX
+*.synctex.gz
+
+# LaTeX Beamer
+*.snm
+*.vrb
+*.nav
+*.out
+*.aux
+
+# BibTeX
+*.bbl
+*.blg
+
+
+# PDF output - usually a bad idea to keep this in Git
+*.pdf
+
+# compile
+out/
