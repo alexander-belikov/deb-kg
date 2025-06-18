@@ -6,7 +6,7 @@ import requests
 from suthing import FileHandle
 from tqdm import tqdm
 
-from run.util import crawl_directories
+from src.util import crawl_directories
 
 logger = logging.getLogger(__name__)
 

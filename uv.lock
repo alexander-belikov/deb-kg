@@ -27,15 +27,6 @@ wheels = [
 ]
 
 [[package]]
-name = "blinker"
-version = "1.9.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/21/28/9b3f50ce0e048515135495f198351908d99540d69bfdc8c1d15b73dc55ce/blinker-1.9.0.tar.gz", hash = "sha256:b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf", size = 22460, upload-time = "2024-11-08T17:25:47.436Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl", hash = "sha256:ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc", size = 8458, upload-time = "2024-11-08T17:25:46.184Z" },
-]
-
-[[package]]
 name = "bs4"
 version = "0.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -136,11 +127,11 @@ wheels = [
 [[package]]
 name = "deb-kg"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "bs4" },
     { name = "graphcast" },
-    { name = "graphcat" },
+    { name = "python-debianbts" },
     { name = "suthing" },
     { name = "tqdm" },
 ]
@@ -154,7 +145,7 @@ dev = [
 requires-dist = [
     { name = "bs4", specifier = ">=0.0.2" },
     { name = "graphcast", extras = ["plot"], specifier = ">=0.14.2" },
-    { name = "graphcat", extras = ["plot"], specifier = ">=1.0.5" },
+    { name = "python-debianbts", specifier = ">=4.1.1" },
     { name = "suthing", specifier = ">=0.4.1" },
     { name = "tqdm", specifier = ">=4.67.1" },
 ]
@@ -197,19 +188,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e1/9e/e150c93a52dbe94707d3298a4c89d8778afccf619e4861763f0453fb72c9/graphcast-0.14.2.tar.gz", hash = "sha256:0b24be0d3f509c26ac10d229add699ffc50fea69ad1d57dbd3c453cf89750972", size = 64506, upload-time = "2025-05-16T19:58:19Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ef/08/e2146cf66501010758c552cea25a4556651dc17a53fefd654bb8c60ca9e4/graphcast-0.14.2-py3-none-any.whl", hash = "sha256:ca0a36f792d365aa5fc23fbdb14fead1555d2b16113621aa683ac38db790ea31", size = 85085, upload-time = "2025-05-16T19:58:17.622Z" },
-]
-
-[[package]]
-name = "graphcat"
-version = "1.0.5"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "blinker" },
-    { name = "networkx" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/40/93/5971dedccd1c293e45db3bcf2837e9f9f7627ad4bb2eef1604673bc8be52/graphcat-1.0.5.tar.gz", hash = "sha256:6b026aa49ebd5e3949f51bc9549e4768afd41571d6fc0a3f94b83fe3c5249778", size = 8677053, upload-time = "2022-11-21T04:56:25.241Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3d/10/62282c1e6b6f99d8e0e4976f06435376ef9a5cc51ab7b57a8168ab1d7a36/graphcat-1.0.5-py3-none-any.whl", hash = "sha256:a492e2a8e6abbb5a5f01189e86b82d0cb0ee3e9bc144f3daca33b805b7448848", size = 28622, upload-time = "2022-11-21T04:56:13.044Z" },
 ]
 
 [[package]]
@@ -459,6 +437,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432, upload-time = "2024-03-01T18:36:20.211Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427", size = 229892, upload-time = "2024-03-01T18:36:18.57Z" },
+]
+
+[[package]]
+name = "python-debianbts"
+version = "4.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b5/2c/10993f887ddf762d46540946e4dca6ccf03b9d1799101622b22379670ca4/python_debianbts-4.1.1.tar.gz", hash = "sha256:f443b18ce2411b373103784715e6707df034f48dad7be387a6917b16e154d793", size = 16585, upload-time = "2024-06-09T07:42:15.973Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fd/7c/b1dfbaa44e8a4a992443dbe21d0c37e77b820ff069a9d0eb9df917934dbd/python_debianbts-4.1.1-py3-none-any.whl", hash = "sha256:9900941d94a41039520fc25847bb74cad92eacf14698c9fbd3f4d2360a1c2161", size = 11063, upload-time = "2024-06-09T07:42:13.822Z" },
 ]
 
 [[package]]

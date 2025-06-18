@@ -7,7 +7,7 @@ import logging
 import click
 import pathlib
 
-from run.onto import DebianMetadataFetcher
+from src.onto import DebianMetadataFetcher
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

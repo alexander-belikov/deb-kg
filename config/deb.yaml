@@ -30,14 +30,14 @@ vertex_config:
         -   fields:
             -   name
             -   email
-    -   name: uploader
-        fields:
-        -   name
-        -   email
-        indexes:
-        -   fields:
-            -   name
-            -   email
+#    -   name: uploader
+#        fields:
+#        -   name
+#        -   email
+#        indexes:
+#        -   fields:
+#            -   name
+#            -   email
     -   name: bug
         fields:
         -   text
@@ -49,8 +49,6 @@ edge_config:
     -   source: package
         target: package
     -   source: maintainer
-        target: package
-    -   source: uploader
         target: package
     -   source: package
         target: bug
