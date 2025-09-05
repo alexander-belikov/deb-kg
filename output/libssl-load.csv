@@ -1,0 +1,342 @@
+﻿contributor,numberOfPackagesAffected
+Mattias Ellert,51
+Debian Security Tools,27
+Debian QA Group,23
+Debian Perl Group,14
+Debian VoIP Team,13
+Debian MySQL Maintainers,13
+Debian OpenStack,12
+Debian HPC Team,12
+Laszlo Boszormenyi (GCS),10
+Debian Cyrus Team,10
+Debian Med Packaging Team,9
+Sam Hartman,9
+Debian Authentication Maintainers,8
+Debian Rust Maintainers,8
+Ceph Packaging Team,8
+Debian Science Maintainers,7
+Debian Games Team,7
+Andrej Shadura,7
+Marco d'Itri,7
+Debian PHP Maintainers,7
+Debian Haskell Group,7
+Debian DNS Team,6
+Dmitry Smirnov,6
+Debian Systemd Maintainers,6
+Debian Multimedia Maintainers,6
+Debian PostgreSQL Maintainers,6
+Debian Nagios Maintainer Group,6
+Debian OpenSC Maintainers,6
+Debian Remote Maintainers,5
+Pierre Chifflier,5
+Chris Boot,5
+Sandro Tosi,5
+Christian Marillat,5
+Debian OCaml Maintainers,5
+Philipp Kern,5
+Debian FreeIPA Team,5
+Debian Edu Packaging Team,4
+Patrick Matthäi,4
+Debian Ruby Team,4
+Stefan Hornburg (Racke),4
+Debian Qt/KDE Maintainers,4
+pdns packagers,4
+Debian OpenSSH Maintainers,4
+Ondřej Surý,4
+Mattia Rizzolo,4
+Daniel Baumann,4
+Dennis van Dok,4
+Alastair McKinstry,4
+Debian wpasupplicant Maintainers,3
+Debian Shib Team,3
+Magnus Holmgren,3
+unbound packagers,3
+Boris Pek,3
+Richard Laager,3
+Andrea Pappacoda,3
+Debian R Packages Maintainers,3
+Ying-Chun Liu (PaulLiu),3
+syslog-ng maintainers,3
+Debian SOGo Maintainers,3
+Bastian Germann,3
+Debian Python Team,3
+Debian EFI Team,3
+Peter Pentchev,3
+Chris Lamb,3
+Dima Kogan,3
+Seunghun Han,3
+PCP Development Team,3
+Ryan Kavanagh,3
+David Bürgin,3
+Debian iSCSI Maintainers,3
+Debian XMPP Maintainers,3
+Kan-Ru Chen (陳侃如),3
+Vincent Bernat,3
+Axel Beckert,3
+Tomasz Buchert,3
+Debian IoT Maintainers,3
+Debian Go Packaging Team,3
+Gilles Filippini,3
+gtkpod Maintainers,3
+Debian KDE Extras Team,3
+Apollon Oikonomopoulos,3
+Debian FreeRADIUS Packaging Team,3
+getdns packagers,3
+Debian Apache Maintainers,3
+Debian DPDK Maintainers,3
+Debian Pkg-e Team,3
+Vagrant Cascadian,2
+Francisco Vilmar Cardoso Ruviaro,2
+Sophie Brun,2
+Debian Xilinx Package Maintainers,2
+Salvatore Bonaccorso,2
+Moritz Muehlenhoff,2
+Debian SSSD Team,2
+Dirk Eddelbuettel,2
+Mathieu Trudel-Lapierre,2
+Florian Ernst,2
+Andrew Pollock,2
+xiao sheng wen,2
+Michael Biebl,2
+James McCoy,2
+Debian Java Maintainers,2
+Paride Legovini,2
+Hilko Bengen,2
+Barak A. Pearlmutter,2
+DebianOnMobile Maintainers,2
+Debian OpenSSL Team,2
+Fabio Augusto De Muzio Tobich,2
+Paulo Vital,2
+ProFTPD Maintainance Team,2
+Matthias Klose,2
+Amin Bandali,2
+Debian Chinese Team,2
+Krzysztof Burghardt,2
+Freexian Packaging Team,2
+Debian PHP PECL Maintainers,2
+Mohan Devarajulu,2
+Roman Ondráček,2
+Ludovic Rousseau,2
+Georges Khaznadar,2
+TransNexus,2
+Bernd Zeimetz,2
+Daniel Echeverri,2
+Douglas Kosovic,2
+Roger A. Light,2
+Craig Small,2
+Debian Cryptocoin Team,2
+Nicolas Mora,2
+Christopher Knadle,2
+Vincent Sanders,2
+Debian Nginx Maintainers,2
+Mongo C Driver Team,2
+Unit 193,2
+Jörg Frings-Fürst,2
+Christoph Biedl,2
+Dmitry Baryshkov,2
+Chris Hofstaedtler,2
+Thorsten Alteholz,2
+Timo Aaltonen,2
+Nobuhiro Iwamatsu,2
+Moritz Schlarb,2
+Kea,2
+Wartan Hachaturow,2
+Maintainers of GStreamer packages,2
+Andreas Rönnquist,2
+Kentaro Hayashi,2
+Marc Haber,2
+ClamAV Team,2
+Debian ACE maintainers,2
+Eduard Bloch,2
+Ileana Dumitrescu,2
+Kurt Roeckx,2
+Debian Robotics Team,2
+Conserver Maintainers,2
+CFEngine Team,2
+José Gutiérrez de la Concha,1
+Debian VSquare Team,1
+Thomas Ward,1
+uWSGI packaging team,1
+Tatsuya Kinoshita,1
+Gürkan Myczko,1
+Markus Schade,1
+Ludovic Drolez,1
+Rodrigo Carvalho,1
+Casper Gielen,1
+Vladimir Vassilev,1
+Philipp Matthias Hahn,1
+Elías Alejandro Año Mendoza,1
+Christoph Berg,1
+Stephen Gelman,1
+Petter Reinholdtsen,1
+Salvo 'LtWorf' Tomaselli,1
+Debian XML/SGML Group,1
+Jan Niehusmann,1
+Keng-Yu Lin,1
+Nicholas Guriev,1
+Debian GNOME Maintainers,1
+Luigi Gangitano,1
+Hans-Christoph Steiner,1
+Takuo Kitame,1
+Paul Slootman,1
+Jean Baptiste Favre,1
+Mo Zhou,1
+Noah Meyerhans,1
+Lennart Weller,1
+Filip Strömbäck,1
+Lev Lamberov,1
+Neutron Soutmun,1
+Sergei Golovan,1
+Sven Hartge,1
+Romain Francoise,1
+Marc Singer,1
+Guus Sliepen,1
+Roman Tsisyk,1
+Ricardo Mones,1
+Markus Uhlin,1
+strongSwan Maintainers,1
+GreaterFire,1
+Stephen Gallagher,1
+Timo Lindfors,1
+Marcio de Souza Oliveira,1
+Debian QEMU Team,1
+Josue Abarca,1
+Jhon Alejandro Marin Rodriguez,1
+Uwe Kleine-König,1
+Eivind Naess,1
+Alvin Chen,1
+Tcl/Tk Debian Packagers,1
+Peter Palfrader,1
+Anuradha Weeraman,1
+Sebastien Badia,1
+Debian Hamradio Maintainers,1
+Shachar Shemesh,1
+Russ Allbery,1
+Bernhard Schmidt,1
+David da Silva Polverari,1
+Debian l10n developers,1
+Thorsten Glaser,1
+LaMont Jones,1
+Kylin Team,1
+Noël Köthe,1
+Olly Betts,1
+pdns-recursor packagers,1
+Debian Javascript Maintainers,1
+nsd packagers,1
+Ferenc Wágner,1
+Max Vozeler,1
+Dimitri Fontaine,1
+Mathieu Mirmont,1
+Andreas Moog,1
+Utopia Maintenance Team,1
+Athena Capital Research,1
+Simon Horman,1
+Stephen Kitt,1
+Pulseaudio maintenance team,1
+Ben Westover,1
+Tristan Seligmann,1
+Internet Measurement Packaging Team,1
+Sylvestre Ledru,1
+Frédéric Pierret,1
+Jochen Sprickerhof,1
+Mike Gabriel,1
+Victor Seva,1
+Faidon Liambotis,1
+Stefan Schörghofer,1
+ownCloud for Debian maintainers,1
+Matrix Packaging Team,1
+Debian lighttpd maintainers,1
+Debian MongoDB Maintainers,1
+Alexander Zangerl,1
+Alberto Garcia,1
+Federico Ceratto,1
+Laurent Bigonville,1
+Hideki Yamane,1
+Joost van Baal-Ilić,1
+Debian Lua Team,1
+Rémi Vanicat,1
+Ma Aiguo,1
+Keith Winstein,1
+Jose Luis Rivas,1
+Debian kernel team,1
+Thomas Koch,1
+Joerg Jaspert,1
+Debian HA Maintainers,1
+Xavier Roche,1
+libloc maintainers,1
+Eva Ramon Salinas,1
+Ivo De Decker,1
+Stig Sandbeck Mathisen,1
+Sergey B Kirpichev,1
+Thijs Kinkhorst,1
+Carlos Henrique Lima Melara,1
+Richard Levenberg,1
+Micha Lenk,1
+GNU/kFreeBSD Maintainers,1
+Jeremy T. Bouse,1
+Abhijith PA,1
+Ian Jackson,1
+Pierre-Elliott Bécue,1
+RPM packaging team,1
+Anibal Monsalve Salazar,1
+Shih-Yuan Lee (FourDollars),1
+Jérôme Charaoui,1
+Yangfl,1
+Francesco Paolo Lovergine,1
+Frederic Peters,1
+Rhonda D'Vine,1
+Roberto Lumbreras,1
+Kyle Robbertze,1
+Debian HAProxy Maintainers,1
+Andriy Grytsenko,1
+Andrew Ayer,1
+Romain Perier,1
+Abdelhakim Qbaich,1
+Debian Gambas Team,1
+Debian GIS Project,1
+Chris Taylor,1
+TANIGUCHI Takaki,1
+Fab Stz,1
+Denys Berkovskyy,1
+Thomas Dreibholz,1
+Debian Cloud Team,1
+Kees Cook,1
+Frank Terbeck,1
+Gianfranco Costamagna,1
+dnsdist packagers,1
+dnssec-trigger packagers,1
+Arno Töll,1
+Debian TeX Task Force,1
+Calibre maintainer team,1
+Thomas Calderon,1
+Gergely Pilisi,1
+Antti Järvinen,1
+Joao Eriberto Mota Filho,1
+Tom Lee,1
+Calogero Lo Leggio,1
+Debian BOINC Maintainers,1
+Debian CommunityWLAN Team,1
+Debian Cryptsetup Team,1
+Jonathan Carter,1
+Debian Bacula Team,1
+Jose M Calhariz,1
+Paulo Henrique de Lima Santana (phls),1
+Bartosz Fenski,1
+Richard Ulrich,1
+Kari Pahula,1
+Frank B. Brokken,1
+Alessandro Ghedini,1
+Debian Cairo-dock Maintainers,1
+Debian Erlang Packagers,1
+Ejabberd Packaging Team,1
+Sébastien Villemot,1
+Cédric Barboiron,1
+Debian Common Lisp Team,1
+Debian GCC Maintainers,1
+Asheesh Laroia,1
+Debian Borg Collective,1
+John Paul Adrian Glaubitz,1
+Pierre-Louis Bonicoli,1
+Antoine Beaupré,1
+Dovecot Maintainers,1
+Alexander GQ Gerasiov,1

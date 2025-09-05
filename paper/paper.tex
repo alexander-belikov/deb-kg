@@ -18,7 +18,7 @@
         In an era where software systems are increasingly complex and interconnected, effectively managing the relationships between packages, maintainers, dependencies, and vulnerabilities is both a challenge and a necessity.
         This paper explores the integration of knowledge graphs into the Debian ecosystem as a powerful means to bring structure, semantics, and coherence to diverse sources of package-related data.
         By unifying information such as package metadata, security advisories, and reproducibility reports into a single graph-based representation, we enable richer visibility into the ecosystem's structure and behavior.
-        Beyond constructing the Deb-KG graph, we demonstrate how it supports practical, high-impact applications — such as tracing vulnerability propagation and identifying gaps between community needs and development activity — thereby offering a foundation for smarter, data-informed decision-making within Debian.
+        Beyond constructing the DebKG graph, we demonstrate how it supports practical, high-impact applications — such as tracing vulnerability propagation and identifying gaps between community needs and development activity — thereby offering a foundation for smarter, data-informed decision-making within Debian.
     \end{abstract}
 
 
@@ -35,8 +35,8 @@
     With over 50,000 packages maintained by a distributed network of contributors, Debian embodies a richly interconnected environment.
     Dependencies among packages, propagation of security fixes, reproducible builds, and human collaboration patterns all contribute to a system that is both large-scale and socially maintained.
 
-    We introduce \emph{Deb-KG}, a knowledge graph constructed for the Debian ecosystem using the GraphCast ingestion framework~\cite{graphcast}.
-    Deb-KG integrates package metadata, security advisories, reproducibility reports, and community signals into a coherent property-graph model.
+    We introduce \emph{DebKG}, a knowledge graph constructed for the Debian ecosystem using the GraphCast ingestion framework~\cite{graphcast}.
+    DebKG integrates package metadata, security advisories, reproducibility reports, and community signals into a coherent property-graph model.
     This enables a range of applications, including:
 
     \begin{itemize}
@@ -54,7 +54,7 @@
     Our use of the property graph model reflects a preference for tractable computation and integration over exhaustive ontological description, aligning with the practical demands of large-scale software ecosystems.
 
 
-    \section{Deb-KG Schema}
+    \section{DebKG Schema}
 
     The Debian ecosystem is centered around packages and the complex web of relationships between them.
     Beyond the standard \texttt{Depends} relation, Debian supports several other dependency types, including \texttt{Recommends}, \texttt{Suggests}, and \texttt{Pre-Depends}, each conveying different semantic strength in package coupling.
@@ -78,8 +78,8 @@
     The dependency structure among packages forms a directed acyclic graph (DAG), reflecting build and installation order constraints.
     Maintainer relationships introduce additional complexity, as a package may be co-maintained or transferred between individuals and teams over time.
 
-    This schema serves as the foundation for Deb-KG, enabling rich semantic representation of technical and social structures within Debian.
-    The code for data collection and knowledge graph construction is provided in a github repository: \url{https://github.com/alexander-belikov/deb-kg}.
+    This schema serves as the foundation for DebKG, enabling rich semantic representation of technical and social structures within Debian.
+    The code for data collection and knowledge graph construction is provided in a github repository: \url{https://github.com/alexander-belikov/DebKG}.
 
 
     \begin{strip}
@@ -94,32 +94,32 @@
             \includegraphics[width=\textwidth]{../figs/debian-eco-vc2vc}
         \end{subfigure}
 
-        \captionof{figure}{Schema components in Deb-KG. \textbf{Left:} Internal structure of entities: \texttt{Package}, \texttt{Maintainer}, and \texttt{Bug}. \textbf{Right:} Relations between packages.}
+        \captionof{figure}{Schema components in DebKG. \textbf{Left:} Internal structure of entities: \texttt{Package}, \texttt{Maintainer}, and \texttt{Bug}. \textbf{Right:} Relations between packages.}
         \label{fig:schema}
     \end{strip}
 
     \section{Practical Applications}
 
 
-    {\bf Vulnerability Propagation and Prioritization}: Deb-KG enables tracing how security vulnerabilities propagate through the Debian ecosystem by modeling packages and their dependencies as a directed graph. Each package is linked to its known bugs (including CVEs) and to other packages via versioned dependency edges. In this structure, a vulnerability in a core package — such as a C library or compression tool — can be traced forward to identify all transitive downstream packages that rely on it, either directly or indirectly.
+    {\bf Vulnerability Propagation and Prioritization}: DebKG enables tracing how security vulnerabilities propagate through the Debian ecosystem by modeling packages and their dependencies as a directed graph. Each package is linked to its known bugs (including CVEs) and to other packages via versioned dependency edges. In this structure, a vulnerability in a core package — such as a C library or compression tool — can be traced forward to identify all transitive downstream packages that rely on it, either directly or indirectly.
 
-    This facilitates rapid assessment of impact and helps prioritize which vulnerabilities demand immediate attention. For example, if a vulnerability affects \texttt{libssl}, the graph can enumerate all packages that eventually depend on it, highlighting critical infrastructure components (e.g., web servers, network tools, or authentication libraries). This waterfall effect, often difficult to quantify manually, becomes immediately visible in Deb-KG’s queryable structure.
+    This facilitates rapid assessment of impact and helps prioritize which vulnerabilities demand immediate attention. For example, if a vulnerability affects \texttt{libssl}, the graph can enumerate all packages that eventually depend on it, highlighting critical infrastructure components (e.g., web servers, network tools, or authentication libraries). This waterfall effect, often difficult to quantify manually, becomes immediately visible in DebKG’s queryable structure.
 
     Furthermore, by integrating package popularity metrics (e.g., installation counts) and metadata such as last update date or maintainer availability, one can rank affected packages based on real-world usage and maintenance capacity. This supports risk-aware patch scheduling and coordination between maintainers of interdependent packages.
 
-        {\bf Mapping Community Needs and Engagement Gaps}: Deb-KG also supports the mapping of unmet community needs by linking Debian packages to external platforms where users and developers express requests, ideas, or feedback. For instance, proposals from the “grow-your-ideas” platform or feature discussions from mailing lists can be semantically aligned to packages in the knowledge graph.
+        {\bf Mapping Community Needs and Engagement Gaps}: DebKG also supports the mapping of unmet community needs by linking Debian packages to external platforms where users and developers express requests, ideas, or feedback. For instance, proposals from the “grow-your-ideas” platform or feature discussions from mailing lists can be semantically aligned to packages in the knowledge graph.
 
     Once these links are established, one can identify packages that have accumulated significant user interest but show little recent development activity, few maintainers, or a backlog of unresolved bugs. This provides a data-driven view into attention gaps within the ecosystem.
 
     Moreover, the graph can highlight mismatches between user demand and maintainer coverage — e.g., a high-priority package used in scientific computing that lacks active stewardship.
     This insight can inform outreach efforts, mentorship programs, or targeted funding, and even guide where to route new contributors based on their interests and background.
 
-    By embedding both technical and social signals, Deb-KG acts as a socio-technical observatory, helping the community align development resources with real-world usage and demand.
+    By embedding both technical and social signals, DebKG acts as a socio-technical observatory, helping the community align development resources with real-world usage and demand.
 
 
     \section{Conclusion}
 
-    We presented Deb-KG, a property graph constructed from Debian’s package ecosystem.
+    We presented DebKG, a property graph constructed from Debian’s package ecosystem.
     It captures key entities and relationships — including packages, maintainers, bugs, and dependencies — and serves as a foundation for both optimization workflows and the development of more detailed semantic schemas.
 
     Future improvements involve work along two main directions: enhancing the representation of the ecosystem, and building decision-support tools for resource allocation.
@@ -142,7 +142,7 @@
     Such models can guide decisions on bug triaging, package upgrading or deprecation, maintainer support, and coordination across subsystems.
     For example, one could compute an optimal portfolio of bugs to resolve given constraints on developer time, or identify high-impact packages requiring intervention due to both technical fragility and social under-maintenance.
 
-    Finally, tools like Deb-KG can support multi-objective optimization — not only in terms of time and robustness, but also incorporating ethical dimensions such as equitable contribution, open licensing, and environmental or academic impact.
+    Finally, tools like DebKG can support multi-objective optimization — not only in terms of time and robustness, but also incorporating ethical dimensions such as equitable contribution, open licensing, and environmental or academic impact.
     Knowledge graphs provide the expressive substrate needed to reason about such multi-dimensional trade-offs at scale.
 
 

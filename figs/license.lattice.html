@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software License Lattice</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .aspects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .aspect-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .aspect-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .aspect-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        .lattice-container {
+            position: relative;
+            height: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .license-node {
+            position: absolute;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .license-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .proprietary { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); }
+        .mit { background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); }
+        .bsd { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+        .apache { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; }
+        .lgpl { background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); color: #333; }
+        .gpl { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); }
+        .agpl { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); }
+        .unlicense { background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%); color: #333; }
+
+        .connection {
+            position: absolute;
+            stroke: #666;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .arrow {
+            fill: #666;
+            opacity: 0.6;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .yes { background: #d4edda; color: #155724; }
+        .no { background: #f8d7da; color: #721c24; }
+        .partial { background: #fff3cd; color: #856404; }
+
+        .info-panel {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 5px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Software License Lattice</h1>
+
+        <div class="aspects-grid">
+            <div class="aspect-card">
+                <h3>🆓 Freedom to Use</h3>
+                <p>Can use the software for any purpose without restrictions</p>
+            </div>
+            <div class="aspect-card">
+                <h3>🔧 Freedom to Modify</h3>
+                <p>Can modify the source code and create derivative works</p>
+            </div>
+            <div class="aspect-card">
+                <h3>📤 Freedom to Distribute</h3>
+                <p>Can redistribute original or modified versions</p>
+            </div>
+            <div class="aspect-card">
+                <h3>🔒 Copyleft Requirement</h3>
+                <p>Must share source code of derivative works under same license</p>
+            </div>
+            <div class="aspect-card">
+                <h3>📋 Attribution Requirement</h3>
+                <p>Must preserve copyright notices and attributions</p>
+            </div>
+            <div class="aspect-card">
+                <h3>🌐 Network Copyleft</h3>
+                <p>Must share source even when used as network service</p>
+            </div>
+        </div>
+
+        <div class="lattice-container">
+            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                <!-- Connections showing "less restrictive than" relationships -->
+                <path class="connection" d="M 200 700 L 300 600" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 200 700 L 400 600" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 200 700 L 500 600" marker-end="url(#arrowhead)"/>
+
+                <path class="connection" d="M 300 600 L 400 450" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 400 600 L 400 450" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 500 600 L 400 450" marker-end="url(#arrowhead)"/>
+
+                <path class="connection" d="M 400 450 L 300 300" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 400 450 L 500 300" marker-end="url(#arrowhead)"/>
+
+                <path class="connection" d="M 300 300 L 400 150" marker-end="url(#arrowhead)"/>
+                <path class="connection" d="M 500 300 L 400 150" marker-end="url(#arrowhead)"/>
+
+                <path class="connection" d="M 400 150 L 1000 50" marker-end="url(#arrowhead)"/>
+
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" class="arrow"/>
+                    </marker>
+                </defs>
+            </svg>
+
+            <!-- Most Restrictive -->
+            <div class="license-node proprietary" style="top: 20px; left: 950px;">
+                <div>Proprietary</div>
+                <small>All Rights Reserved</small>
+            </div>
+
+            <!-- Strong Copyleft -->
+            <div class="license-node agpl" style="top: 120px; left: 350px;">
+                <div>AGPL-3.0</div>
+                <small>Network Copyleft</small>
+            </div>
+
+            <!-- Standard Copyleft -->
+            <div class="license-node gpl" style="top: 270px; left: 250px;">
+                <div>GPL-3.0</div>
+                <small>Strong Copyleft</small>
+            </div>
+
+            <div class="license-node lgpl" style="top: 270px; left: 450px;">
+                <div>LGPL-3.0</div>
+                <small>Weak Copyleft</small>
+            </div>
+
+            <!-- Permissive with Conditions -->
+            <div class="license-node apache" style="top: 420px; left: 350px;">
+                <div>Apache-2.0</div>
+                <small>Patent Grant</small>
+            </div>
+
+            <!-- Simple Permissive -->
+            <div class="license-node mit" style="top: 570px; left: 250px;">
+                <div>MIT</div>
+                <small>Simple Permissive</small>
+            </div>
+
+            <div class="license-node bsd" style="top: 570px; left: 350px;">
+                <div>BSD-3-Clause</div>
+                <small>Permissive</small>
+            </div>
+
+            <div class="license-node bsd" style="top: 570px; left: 450px;">
+                <div>BSD-2-Clause</div>
+                <small>Simplified BSD</small>
+            </div>
+
+            <!-- Least Restrictive -->
+            <div class="license-node unlicense" style="top: 670px; left: 150px;">
+                <div>Unlicense</div>
+                <small>Public Domain</small>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);"></div>
+                <span>Proprietary (Most Restrictive)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);"></div>
+                <span>AGPL (Network Copyleft)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);"></div>
+                <span>GPL (Strong Copyleft)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);"></div>
+                <span>LGPL (Weak Copyleft)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                <span>Apache (Permissive + Patents)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);"></div>
+                <span>MIT (Simple Permissive)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <span>BSD (Permissive)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);"></div>
+                <span>Unlicense (Least Restrictive)</span>
+            </div>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>License</th>
+                    <th>Use</th>
+                    <th>Modify</th>
+                    <th>Distribute</th>
+                    <th>Attribution</th>
+                    <th>Copyleft</th>
+                    <th>Network Copyleft</th>
+                    <th>Patent Grant</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Proprietary</strong></td>
+                    <td class="partial">Limited</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">N/A</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                </tr>
+                <tr>
+                    <td><strong>AGPL-3.0</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="yes">Strong</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>GPL-3.0</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="yes">Strong</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>LGPL-3.0</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="partial">Weak</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Apache-2.0</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>MIT</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                </tr>
+                <tr>
+                    <td><strong>BSD-3-Clause</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Required</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                </tr>
+                <tr>
+                    <td><strong>Unlicense</strong></td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                    <td class="no">No</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-panel">
+            <h3>Understanding the Lattice</h3>
+            <p><strong>Direction:</strong> Arrows point from less restrictive to more restrictive licenses. A license higher in the lattice is more restrictive than licenses below it.</p>
+            <p><strong>Compatibility:</strong> Code under a less restrictive license can generally be incorporated into projects with more restrictive licenses, but not vice versa.</p>
+            <p><strong>Key Insight:</strong> The lattice shows that permissive licenses (MIT, BSD) are at the bottom because they impose fewer restrictions, while copyleft licenses (GPL, AGPL) are higher because they require derivative works to maintain the same freedoms.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive hover effects
+        document.querySelectorAll('.license-node').forEach(node => {
+            node.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.zIndex = '20';
+            });
+
+            node.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.zIndex = '10';
+            });
+        });
+    </script>
+</body>
+</html>

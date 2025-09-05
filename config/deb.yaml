@@ -1,17 +1,45 @@
 general:
     name: debian-eco
     version: 0.0.1
-resources: []
-#-   resource_name: communities
-#    apply:
-#    -   source: package
-#        target: pa
-#    -   key: entity
-#        apply:
-#        -   vertex: entity
-#    -   key: community
-#        apply:
-#        -   vertex: community
+resources:
+-   resource_name: package
+    apply:
+    -   vertex: package
+    -   key: dependencies
+        apply:
+        -   key: breaks
+            apply:
+            -   vertex: package
+        -   key: conflicts
+            apply:
+            -   vertex: package
+        -   key: depends
+            apply:
+            -   vertex: package
+        -   key: pre-depends
+            apply:
+            -   vertex: package
+        -   key: suggests
+            apply:
+            -   vertex: package
+        -   key: recommends
+            apply:
+            -   vertex: package
+    -   source: maintainer
+        target: package
+    -   source: package
+        target: package
+        relation_from_key: true
+    -   key: maintainer
+        apply:
+        -   vertex: maintainer
+-   resource_name: bug
+    apply:
+    -   map:
+            package: name
+            bug_num: id
+    -   vertex: package
+    -   vertex: bug
 vertex_config:
     vertices:
     -   name: package
@@ -21,29 +49,22 @@ vertex_config:
         indexes:
         -   fields:
             -   name
-            -   version
     -   name: maintainer
         fields:
         -   name
         -   email
         indexes:
         -   fields:
-            -   name
             -   email
-#    -   name: uploader
-#        fields:
-#        -   name
-#        -   email
-#        indexes:
-#        -   fields:
-#            -   name
-#            -   email
     -   name: bug
         fields:
-        -   text
+        -   id
+        -   subject
+        -   severity
+        -   date
         indexes:
         -   fields:
-            -   _key
+            -   id
 edge_config:
     edges:
     -   source: package

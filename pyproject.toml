@@ -10,10 +10,12 @@ dev = [
 [project]
 dependencies = [
   "bs4>=0.0.2",
-  "graphcast[plot]>=0.14.2",
+  "graflo>=1.1.0",
+  "matplotlib>=3.10.3",
+  "pygraphviz>=1.14",
   "python-debianbts>=4.1.1",
   "suthing>=0.4.1",
-  "tqdm>=4.67.1"
+  "tqdm>=4.67.1",
 ]
 description = "Add your description here"
 name = "deb-kg"
