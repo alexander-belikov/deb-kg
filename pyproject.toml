@@ -15,7 +15,7 @@ dependencies = [
   "pygraphviz>=1.14",
   "python-debianbts>=4.1.1",
   "suthing>=0.4.1",
-  "tqdm>=4.67.1",
+  "tqdm>=4.67.1"
 ]
 description = "Add your description here"
 name = "deb-kg"

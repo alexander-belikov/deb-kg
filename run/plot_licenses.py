@@ -139,18 +139,22 @@ def find_direct_relationships(df: pd.DataFrame) -> List[Tuple[str, str]]:
                     is_direct = True
                     for k, intermediate in enumerate(licenses):
                         if k != i and k != j:
-                            if is_less_open_than(df.iloc[i], df.iloc[k]) and is_less_open_than(df.iloc[k], df.iloc[j]):
+                            if is_less_open_than(
+                                df.iloc[i], df.iloc[k]
+                            ) and is_less_open_than(df.iloc[k], df.iloc[j]):
                                 is_direct = False
                                 break
 
                     if is_direct:
-                        relationships.append((license1, license2))  # Arrow from less open to more open
+                        relationships.append(
+                            (license1, license2)
+                        )  # Arrow from less open to more open
 
     return relationships
 
 
 def create_license_lattice(
-        df: pd.DataFrame, relationships: List[Tuple[str, str]]
+    df: pd.DataFrame, relationships: List[Tuple[str, str]]
 ) -> nx.DiGraph:
     """Create a NetworkX directed graph of the license lattice."""
     G = nx.DiGraph()
@@ -185,7 +189,7 @@ def create_license_lattice(
             openness=openness,
             label=f"{license_name}\n(O: {openness:.1f})",
             # Assign a rank attribute for vertical positioning
-            rank=str(round(openness))  # Round to nearest integer for discrete ranks
+            rank=str(round(openness)),  # Round to nearest integer for discrete ranks
         )
 
     # Add edges
@@ -202,7 +206,9 @@ def plot_with_pygraphviz(G: nx.DiGraph, fig_path):
     A = nx.nx_agraph.to_agraph(G)
 
     # Set graph attributes
-    A.graph_attr["rankdir"] = "BT"  # Bottom to Top: Less open at bottom, more open at top
+    A.graph_attr["rankdir"] = (
+        "BT"  # Bottom to Top: Less open at bottom, more open at top
+    )
     # A.graph_attr['splines'] = 'ortho' # Can uncomment if desired
     A.graph_attr["nodesep"] = "0.7"  # Adjusted for better spacing with ranks
     A.graph_attr["ranksep"] = "1.5"  # Keep ranks separated
@@ -231,6 +237,7 @@ def plot_with_pygraphviz(G: nx.DiGraph, fig_path):
     A.draw(fig_path / "license_lattice_pygraphviz.png")
     A.draw(fig_path / "license_lattice_pygraphviz.svg")
 
+
 @click.command()
 @click.option(
     "-o", "--figure-output-path", type=click.Path(), default=pathlib.Path("./figs")
@@ -244,13 +251,11 @@ def main(figure_output_path):
     df_numeric = convert_to_numeric(df)
 
     print("Calculating openness scores...")
-    df_numeric["Openness_Score"] = df_numeric.apply(
-        calculate_openness_score, axis=1
-    )
+    df_numeric["Openness_Score"] = df_numeric.apply(calculate_openness_score, axis=1)
 
     print("\nLicense Openness Ranking (Higher score = More Open):")
     sorted_licenses = df_numeric.sort_values("Openness_Score", ascending=False)
-    print(sorted_licenses[['License', 'Openness_Score']].to_string(index=False))
+    print(sorted_licenses[["License", "Openness_Score"]].to_string(index=False))
 
     print("\nFinding direct relationships...")
     relationships = find_direct_relationships(df_numeric)
@@ -262,7 +267,6 @@ def main(figure_output_path):
     G = create_license_lattice(df_numeric, relationships)
 
     plot_with_pygraphviz(G, figure_output_path)
-
 
 
 if __name__ == "__main__":
